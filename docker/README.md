@@ -8,27 +8,11 @@
 
 
 # To run:
-    P=proxy.com:8000
-    docker run -ti --rm \
-        -e HTTPS_PROXY=$P \
-        -e HTTP_PROXY=$P \
-        -e MONOLITHE_REPO=https://github.com/nuagenetworks/monolithe.git \
-        -e MONOLITHE_BRANCH=master \
-        -e SPEC_REPO=https://github.com/nuagenetworks/vsd-api-specifications.git \
-        -v `git rev-parse --show-toplevel`:/build/git/vspkgenerator \
-        vspkgenerator <version> <lang> <spec tag>
-
-    Any of the env varialbles in the docker command is optional.
-
-    The version parameter can be anything. The resulting VSPK will be
-    versioned with that string. The spec branch would usually be "master"
+    docker run -v `pwd`:/out --rm vspkgenerator <lang> <spec tag>
 
     "lang" can be any of the languages supported by vspkgenerator. i.e: "java" or "csharp" or "python" ...
-
-* Note that all the proxy stuff is optional and can be left out if working
-  with direct internet access
 
 
 # Example:
     docker build -t vspkgenerator .
-    docker run -ti --rm -v `git rev-parse --show-toplevel`:/build/git/vspkgenerator vspkgenerator 6.0.1 java master
+    docker run -v `pwd`:/out --rm vspkgenerator java r6.0.1
