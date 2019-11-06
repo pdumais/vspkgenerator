@@ -31,4 +31,4 @@
 
 # Example:
     docker build -t vspkgenerator .
-    docker run -ti --rm -v `git rev-parse --show-toplevel`:/build/git/vspkgenerator vspkgenerator 6.0.1 java master
+    docker run -ti --rm -v `git rev-parse --show-toplevel`:/build/git/vspkgenerator vspkgenerator 6.0.1 java r6.0.1
